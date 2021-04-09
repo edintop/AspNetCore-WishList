@@ -18,7 +18,12 @@ namespace WishList.Controllers
         }
         public IActionResult Index()
         {
-            return View("Index", _context.Items);
+            List<Item> items = new List<Item>();
+            foreach (var item in _context.Items)
+            {
+                items.Add(item);
+            }
+            return View("Index", items);
         }
 
         [HttpGet]
